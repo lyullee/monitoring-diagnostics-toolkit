@@ -74,6 +74,15 @@ separate normal fitting/calibration, causal alarms and reproducible research rec
 
 ## 설치와 실행
 
+GitHub·Zenodo 0.17.0은 공개되어 있습니다. PyPI 게시 권한 등록 확인이 남아 있는 동안에는
+공개 wheel로 바로 설치할 수 있습니다.
+
+```bash
+python -m pip install https://github.com/lyullee/monitoring-diagnostics-toolkit/releases/download/v0.17.0/monitoring_diagnostics_toolkit-0.17.0-py3-none-any.whl
+```
+
+PyPI 게시 완료 후의 설치 명령과 소스 개발 명령:
+
 ```bash
 python -m pip install monitoring-diagnostics-toolkit
 equipment-diagnose list --details
