@@ -23,13 +23,16 @@ jobs:
       - name: Use the exact archives reviewed and deposited in Zenodo
         run: |
           python - <<'PY'
-          import hashlib, pathlib, shutil
-          expected = {
-              'monitoring_diagnostics_toolkit-0.17.0.tar.gz': '2685abaabf4562515c1c3168e8b5dbbcf9bf87931e7af3a715c844124f7f02dd',
-              'monitoring_diagnostics_toolkit-0.17.0-py3-none-any.whl': '50e8d2141540caa89b5d4d1d874715a562ab3d064afb661bf0aef310046281fc'
-          }
+          import hashlib, json, pathlib, shutil
+          import equipment_diagnostics as e
+          manifest = json.loads(pathlib.Path('release-assets.json').read_text())
+          assert manifest['version'] == e.__version__
+          expected = manifest['artifacts']
+          assert len(expected) == 2
           pathlib.Path('dist').mkdir()
           for name, digest in expected.items():
+              assert pathlib.Path(name).name == name
+              assert name.startswith('monitoring_diagnostics_toolkit-'+e.__version__)
               source = pathlib.Path(name)
               assert hashlib.sha256(source.read_bytes()).hexdigest() == digest
               shutil.copyfile(source, pathlib.Path('dist')/name)
