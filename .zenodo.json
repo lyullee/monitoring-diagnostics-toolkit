@@ -1,0 +1,12 @@
+{
+  "title": "Monitoring Diagnostics Toolkit",
+  "description": "Original Python research software for equipment-specific monitoring from explicit SI sensor time series. Includes mass and heat balances, hydraulic resistance, RO permeability, valve tracking, chiller/heat-pump residuals, causal alarm policies, API documentation, development history and qualified validation records. Historical measured-data results are separated from simulation and reused development evaluation. External datasets, papers, fitted corpus profiles and upstream source checkouts are excluded. This is an alpha research toolkit; alarms do not establish fault causality or field safety qualification.",
+  "creators": [{"name": "Lee, Ugwiyeon"}],
+  "license": "MIT",
+  "upload_type": "software",
+  "version": "0.17.0",
+  "doi": "10.5281/zenodo.23992253",
+  "access_right": "open",
+  "keywords": ["condition monitoring", "equipment diagnostics", "physical residuals", "process monitoring", "Python"],
+  "related_identifiers": [{"identifier": "https://github.com/lyullee/monitoring-diagnostics-toolkit", "relation": "isSupplementTo", "scheme": "url"}]
+}

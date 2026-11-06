@@ -1,0 +1,16 @@
+include README.md
+include LICENSE THIRD_PARTY_NOTICES.md CITATION.cff CONTRIBUTING.md
+include .zenodo.json
+include .gitignore .gitattributes
+recursive-include evidence *.md
+recursive-include evidence *.json *.zip
+recursive-include .github *.yml
+recursive-include docs *.md
+recursive-include docs *.json
+recursive-include examples *.py
+recursive-include scripts *.py
+recursive-include tests *.py
+prune .upstream
+prune .venv
+prune outputs
+prune research_support

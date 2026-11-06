@@ -1,0 +1,10 @@
+{
+  "upstream_revisions": {
+    "process-monitoring-toolkit": "79b4cf52a0acd0d0cbd3addbe82c3d98d6385e5a",
+    "h2physics": "f096f007e3fe35c6b6a64e1c5f78715248eb00bc",
+    "pipeline-safety-toolkit": "ae893c73892767922ad2326d9b63b72e8b7611c1",
+    "rotorvibe": "d4b3ebfbf455816ec55c8d9414b8681bf7ddcdd6"
+  },
+  "scope": "Actual object/serialization and one Monitor path; no native solver/field qualification.",
+  "rotorvibe": "Inspected only; no adapter test claimed."
+}

@@ -1,0 +1,16 @@
+{
+  "heatpump": {
+    "development_candidate": "response_point",
+    "scope": "measured state-deviation indication on reused cohort; not independent EF fault-specific qualification",
+    "off_delay_adopted": false,
+    "reason": "raw branch already improves; hold cannot improve first detection and recovery truth unavailable"
+  },
+  "marine": {
+    "selected": "baseline",
+    "all_new_candidates_rejected": true,
+    "reason": "Context, multi-lag growth and short-window change candidates all worsen false-positive rate"
+  },
+  "unchanged_outer_partitions": true,
+  "added_normal_files_train_cal_disjoint": true,
+  "new_independent_fault_metrics": null
+}

@@ -1,0 +1,16 @@
+.venv/
+.upstream/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+build/
+dist/
+outputs/
+research_support/
+.env
+.env.*
+*.pem
+*.key
+.pypirc
+*.log

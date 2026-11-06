@@ -1,0 +1,6 @@
+{
+  "version": "0.17.0",
+  "github": {"repository": "https://github.com/lyullee/monitoring-diagnostics-toolkit", "visibility": "public", "status": "created; initial source upload in progress"},
+  "pypi": {"project": "monitoring-diagnostics-toolkit", "status": "prepared; trusted-publisher registration pending"},
+  "zenodo": {"status": "draft; DOI reserved, not yet published", "doi": "10.5281/zenodo.23992253"}
+}

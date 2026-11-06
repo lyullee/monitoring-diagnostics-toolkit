@@ -1,0 +1,254 @@
+[
+  {
+    "name": "SensorBatch",
+    "signature": "(time_s: 'np.ndarray', values: 'np.ndarray', channels: 'tuple[str, ...]', units: 'tuple[str, ...]', clock_id: 'str', asset_id: 'str', origin: 'str', valid: 'np.ndarray | None' = None, episodes: 'np.ndarray | None' = None, modes: 'np.ndarray | None' = None, metadata: 'dict[str, Any]' = <factory>) -> None",
+    "source": "src/equipment_diagnostics/contracts.py",
+    "line": 31,
+    "doc": "SensorBatch(time_s: 'np.ndarray', values: 'np.ndarray', channels: 'tuple[str, ...]', units: 'tuple[str, ...]', clock_id: 'str', asset_id: 'str', origin: 'str', valid: 'np.ndarray | None' = None, episodes: 'np.ndarray | None' = None, modes: 'np.ndarray | None' = None, metadata: 'dict[str, Any]' = <factory>)"
+  },
+  {
+    "name": "DiagnosticResult",
+    "signature": "(detector: 'str', time_s: 'np.ndarray', scores: 'np.ndarray', valid: 'np.ndarray', alarms: 'np.ndarray', states: 'tuple[str, ...]', reasons: 'tuple[str, ...]', metrics: 'dict[str, np.ndarray]', metadata: 'dict[str, Any]') -> None",
+    "source": "src/equipment_diagnostics/contracts.py",
+    "line": 116,
+    "doc": "DiagnosticResult(detector: 'str', time_s: 'np.ndarray', scores: 'np.ndarray', valid: 'np.ndarray', alarms: 'np.ndarray', states: 'tuple[str, ...]', reasons: 'tuple[str, ...]', metrics: 'dict[str, np.ndarray]', metadata: 'dict[str, Any]')"
+  },
+  {
+    "name": "MassBalanceDiagnostic",
+    "signature": "(channels, *, loss_limit_kg_s, window_s=60.0, inventory_error_bound_kg=0.0, inflow_error_bound_kg_s=0.0, outflow_error_bound_kg_s=0.0, known_loss_error_bound_kg_s=0.0, **kwargs)",
+    "source": "src/equipment_diagnostics/diagnostics.py",
+    "line": 7,
+    "doc": "Estimate positive unexplained loss over a causal inventory window.\n\nMap inventory_mass [kg], inflow/outflow [kg/s] and optional known_loss\n[kg/s]. Configure an engineering loss limit, window and sensor bounds.\nMetrics contain loss, mean net flow and inventory change [kg/s]. This is\nboundary accounting, not leak localization. See docs/MODEL_GUIDE.md."
+  },
+  {
+    "name": "BoilerBalanceDiagnostic",
+    "signature": "(channels, *, loss_limit_kg_s, window_s=60.0, inventory_error_bound_kg=0.0, inflow_error_bound_kg_s=0.0, outflow_error_bound_kg_s=0.0, known_loss_error_bound_kg_s=0.0, **kwargs)",
+    "source": "src/equipment_diagnostics/diagnostics.py",
+    "line": 93,
+    "doc": "Inventory must include steam/water accumulation from a qualified estimator.\n\nDrum level alone is deliberately not converted to total inventory here.\nMap steam to outflow and measured blowdown to known_loss."
+  },
+  {
+    "name": "HeatExchangerDiagnostic",
+    "signature": "(channels, *, cp_hot_j_kg_k, cp_cold_j_kg_k, degradation_limit_fraction=0.2, max_energy_imbalance_fraction=0.15, min_lmtd_k=0.5, max_inlet_rate_k_s=0.05, reference_mode='constant', hot_flow_exponent=0.8, cold_flow_exponent=0.8, max_flow_change_fraction_s=None, **kwargs)",
+    "source": "src/equipment_diagnostics/diagnostics.py",
+    "line": 102,
+    "doc": "Monitor single-phase, quasi-steady counterflow heat transfer.\n\nFour temperatures [K], two mass flows [kg/s] and declared cp values give\nheat duties [W], LMTD [K] and UA [W/K]. Normal references can compensate\nflow-dependent resistance. Heat-balance validity is separate from alarm\nscoring; neither an alarm nor a UA decline identifies foulant chemistry."
+  },
+  {
+    "name": "HydraulicResistanceDiagnostic",
+    "signature": "(channels, *, reference_flow_m3_s=None, flow_exponent=None, reference_density_kg_m3=1000.0, density_exponent=1.0, growth_limit_fraction=0.25, normalization_mode='power', reference_viscosity_pa_s=0.001, flow_input='volume', **kwargs)",
+    "source": "src/equipment_diagnostics/diagnostics.py",
+    "line": 216,
+    "doc": "Detect increased pressure loss after declared flow/property correction.\n\nInput dp [Pa] and volume flow [m3/s] or a dimensionless flow ratio. Optional\ndensity [kg/m3] and viscosity [Pa*s] support explicitly chosen models.\nThe geometry and phase regime must remain applicable; zero flow cannot\nbe normalized. This one-sided detector does not qualify bypass/leakage."
+  },
+  {
+    "name": "VaporizerDiagnostic",
+    "signature": "(channels, *, shortfall_limit_k, minimum_outlet_k=None, prediction_mode='external', **kwargs)",
+    "source": "src/equipment_diagnostics/diagnostics.py",
+    "line": 309,
+    "doc": "Compare outlet temperature with a prediction or a declared low limit.\n\nOutlet/predicted temperatures use K and mass flow uses kg/s. Optional\nenthalpies require a shared J/kg basis. Metrics describe temperature\nshortfall and optional duty, not measured vapor quality or frost cause.\nminimum_only deliberately needs no predicted-temperature sensor role."
+  },
+  {
+    "name": "ROMembraneDiagnostic",
+    "signature": "(channels, *, membrane_area_m2, decline_limit_fraction=0.15, input_mode='corrected', activation_energy_j_mol=None, reference_temperature_k=298.15, temperature_range_k=None, **kwargs)",
+    "source": "src/equipment_diagnostics/diagnostics.py",
+    "line": 355,
+    "doc": "Monitor reference-temperature permeability, not foulant identity.\n\nQp [m3/s], area [m2], positive NDP [Pa] and TCF=A_ref/A(T) give\nQp*TCF/(area*NDP) [m/(Pa*s)]. The raw-input correction path requires\npressure ordering, osmotic pressures and explicit qualified temperature\nparameters; do not repair inconsistent sensor tags by guessing offsets."
+  },
+  {
+    "name": "ValveTrackingDiagnostic",
+    "signature": "(channels, *, error_limit_fraction, delay_s=0.0, response_time_s=0.0, response_warmup_s=None, **kwargs)",
+    "source": "src/equipment_diagnostics/diagnostics.py",
+    "line": 412,
+    "doc": "Compare normalized command and observed position in the same clock.\n\nBoth roles use fractions [1], not percent. A causal delay or declared\nfirst-order normal response produces expected position; engineering\nerror limits and elapsed persistence produce the alarm. Tracking error\nalone does not establish stiction or a particular actuator root cause."
+  },
+  {
+    "name": "create_diagnostic",
+    "signature": "(kind, **kwargs)",
+    "source": "src/equipment_diagnostics/diagnostics.py",
+    "line": 480,
+    "doc": "See module guide and source."
+  },
+  {
+    "name": "ColumnHydraulicsDiagnostic",
+    "signature": "(channels, *, reference_vapor_flow_kg_s, reference_liquid_flow_kg_s, vapor_exponent=None, liquid_exponent=None, growth_limit_fraction=0.3, reference_mode='declared_power', **kwargs)",
+    "source": "src/equipment_diagnostics/additional.py",
+    "line": 7,
+    "doc": "Compare column dp [Pa] with a normal internal-load power relation.\n\nVapor/liquid inputs are internal mass flows [kg/s]. Learned or declared\nexponents are empirical normal compensation, not a flooding correlation.\nFeed flow cannot silently stand in for unknown internal circulation."
+  },
+  {
+    "name": "SteamTrapDiagnostic",
+    "signature": "(channels, *, acoustic_quiet_max, acoustic_loud_min, cold_margin_k, hot_margin_k, startup_exclusion_s=0.0, **kwargs)",
+    "source": "src/equipment_diagnostics/additional.py",
+    "line": 82,
+    "doc": "Apply site-configured temperature/acoustic patterns during supply.\n\nSteam/trap temperatures use K; acoustic_level and supply_on use 1.\nAcoustic normalization and quiet/loud thresholds belong to the caller.\nWarmup exclusion also delays fault decisions. No steam-leak mass rate\nor independently qualified condensate-versus-steam classifier is implied."
+  },
+  {
+    "name": "ChillerPerformanceDiagnostic",
+    "signature": "(channels, *, water_cp_j_kg_k=4180.0, cop_decline_limit_fraction=0.2, approach_increase_limit_k=3.0, enforce_isothermal_carnot_bound=False, reference_mode='constant', regression_degree=2, ridge_alpha=0.01, fractional_residual_floor=0.02, approach_residual_floor_k=0.2, diagnostic_stage=0, ewma_tau_s=60.0, ewma_warmup_s=180.0, auxiliary_conditioning='water', **kwargs)",
+    "source": "src/equipment_diagnostics/additional.py",
+    "line": 134,
+    "doc": "Compute water-side cooling COP and normal performance deviations.\n\nBase roles include five temperatures [K], chilled flow [kg/s] and\nelectrical power [W]. Conditioned/auxiliary stages require additional\nexplicit roles; inspect the constructor and stage validation logic.\nAdditional-stage research candidates have high false alarms and are\nnot promoted to default fault-specific alarms by being implemented."
+  },
+  {
+    "name": "StreamingDiagnostic",
+    "signature": "(diagnostic, *, max_history_samples=10000)",
+    "source": "src/equipment_diagnostics/streaming.py",
+    "line": 13,
+    "doc": "See module guide and source."
+  },
+  {
+    "name": "list_diagnostics",
+    "signature": "()",
+    "source": "src/equipment_diagnostics/catalog.py",
+    "line": 20,
+    "doc": "See module guide and source."
+  },
+  {
+    "name": "HeatPumpPerformanceDiagnostic",
+    "signature": "(channels, *, reference_mode='constant', ridge_alpha=0.001, log_residual_floor=0.02, temperature_residual_floor_k=0.2, feature_set='cycle', calibration_scope='pooled', evaporator_directional=False, **kwargs)",
+    "source": "src/equipment_diagnostics/heat_pump.py",
+    "line": 35,
+    "doc": "Monitor refrigerant-side heating behavior under observed heat demand.\n\nInput condenser duty/power/demand [W], four temperatures [K], refrigerant\nmass flow [kg/s] and shaft speed [1/s]. Output heating COP, temperature\ndifferences, mass/revolution and normal residuals. Normal fit and separate\ncalibration are caller-selected; this is not a flow-fault classifier.\nThe latest weak-fault response branch is a separate Python model profile."
+  },
+  {
+    "name": "FilterServiceRiskModel",
+    "signature": "(channels, *, horizon_s=30.0, window_s=10.0, ridge_alpha=0.01, **kwargs)",
+    "source": "src/equipment_diagnostics/filter_risk.py",
+    "line": 6,
+    "doc": "See module guide and source."
+  },
+  {
+    "name": "FilterRiskClassifier",
+    "signature": "(channels, *, n_estimators=128, min_samples_leaf=30, max_depth=12, random_state=42, calibration_scope='pooled', feature_set='basic', **kwargs)",
+    "source": "src/equipment_diagnostics/filter_classifier.py",
+    "line": 7,
+    "doc": "See module guide and source."
+  },
+  {
+    "name": "TemporalEvidenceDiagnostic",
+    "signature": "(channels, *, time_constant_s=20.0, drift_quantile=0.8, minimum_evidence_s=10.0, **kwargs)",
+    "source": "src/equipment_diagnostics/temporal_evidence.py",
+    "line": 6,
+    "doc": "See module guide and source."
+  },
+  {
+    "name": "FilterBoostedRiskClassifier",
+    "signature": "(channels, *, n_estimators=150, min_samples_leaf=30, max_depth=6, random_state=42, learning_rate=0.05, max_leaf_nodes=15, l2_regularization=1.0, balance_trials=False, **kwargs)",
+    "source": "src/equipment_diagnostics/boosted_filter.py",
+    "line": 8,
+    "doc": "See module guide and source."
+  },
+  {
+    "name": "ResidualCoherenceDiagnostic",
+    "signature": "(channels, *, shrinkage=0.1, **kwargs)",
+    "source": "src/equipment_diagnostics/residual_coherence.py",
+    "line": 6,
+    "doc": "See module guide and source."
+  },
+  {
+    "name": "FilterBoostedLifeModel",
+    "signature": "(channels, **kwargs)",
+    "source": "src/equipment_diagnostics/boosted_filter.py",
+    "line": 100,
+    "doc": "Log remaining-service-life regression, equalized by training trial."
+  },
+  {
+    "name": "HysteresisAlarmDiagnostic",
+    "signature": "(channels, *, on_threshold=1.0, confirmation_s=2.0, release_ratio=0.25, release_s=5.0, **kwargs)",
+    "source": "src/equipment_diagnostics/alarm_hysteresis.py",
+    "line": 7,
+    "doc": "See module guide and source."
+  },
+  {
+    "name": "FilterRiskEnsemble",
+    "signature": "(channels, *, booster_weight=0.75, aggregation='arithmetic', **kwargs)",
+    "source": "src/equipment_diagnostics/filter_ensemble.py",
+    "line": 9,
+    "doc": "See module guide and source."
+  },
+  {
+    "name": "calibrated_level",
+    "signature": "(batch, channel, *, slope_m_v, offset_m, qualified_voltage_range_v, output='level_m')",
+    "source": "src/equipment_diagnostics/physical_inputs.py",
+    "line": 24,
+    "doc": "Linear pressure-transducer calibration; extrapolation is invalid, never clipped."
+  },
+  {
+    "name": "causal_asof",
+    "signature": "(source, target, *, max_age_s)",
+    "source": "src/equipment_diagnostics/physical_inputs.py",
+    "line": 40,
+    "doc": "Last observation available on the same declared clock, episode and mode.\n\nSource timestamps must denote availability, not an uncorrected sensor clock.\nNo forward interpolation, carry across gaps, clock conversion or unit inference."
+  },
+  {
+    "name": "moist_air_exchange",
+    "signature": "(dry_air_flow_kg_s, inlet_temperature_k, outlet_temperature_k, inlet_humidity_kg_kg, outlet_humidity_kg_kg)",
+    "source": "src/equipment_diagnostics/physical_inputs.py",
+    "line": 60,
+    "doc": "ASHRAE-style ideal moist-air enthalpy balance, per kg dry air.\n\nh=1006*T_C + w*(2501000+1860*T_C) J/kg_da. The moisture removal\nrate is not a validated frost-growth rate: liquid drainage and frost enthalpy\nare not measured here. No dry two-sided UA or brine flow is manufactured."
+  },
+  {
+    "name": "horizontal_cylinder_liquid_volume",
+    "signature": "(level_m, *, radius_m, length_m)",
+    "source": "src/equipment_diagnostics/physical_inputs.py",
+    "line": 83,
+    "doc": "Circular segment volume; flat heads only. Invalid levels return NaN."
+  },
+  {
+    "name": "SaturatedBoilerInventory",
+    "signature": "(*, radius_m, length_m, circuit_volumes_m3)",
+    "source": "src/equipment_diagnostics/physical_inputs.py",
+    "line": 101,
+    "doc": "Configured equilibrium inventory, NOT an unobserved swell/void estimator.\n\nPressure must be absolute Pa. Level is geometric height from drum bottom,\nnot raw DP or indicated percent. Every connected circuit volume and its\nmeasured/externally estimated vapor void fraction must be supplied."
+  },
+  {
+    "name": "PiecewiseVaporizer",
+    "signature": "(*, saturation_temperature_k, latent_heat_j_kg, liquid_cp_j_kg_k, vapor_cp_j_kg_k, ua_w_k, property_basis_id)",
+    "source": "src/equipment_diagnostics/physical_inputs.py",
+    "line": 144,
+    "doc": "Steady isobaric preheat/boil/superheat against a constant-temperature source.\n\nQualified constant cp, latent heat and saturation temperature are supplied\nby the caller for ONE fluid/pressure. Enthalpy is relative to saturated liquid.\nUA includes all thermal resistances. No pressure drop, icing dynamics,\nmulticomponent glide or source cooling is inferred."
+  },
+  {
+    "name": "WetCoilAirsideDiagnostic",
+    "signature": "(channels, *, reference_volume_flow_m3_s, reference_density_kg_m3=1.2, flow_exponent=2.0, restriction_growth_limit_fraction=0.25, **kwargs)",
+    "source": "src/equipment_diagnostics/wet_coil.py",
+    "line": 8,
+    "doc": "See module guide and source."
+  },
+  {
+    "name": "LoadConditionedPressureDiagnostic",
+    "signature": "(channels, *, conditioned=True, growth_limit_fraction=0.25, minimum_excess_pa=10.0, ridge_alpha=0.001, **kwargs)",
+    "source": "src/equipment_diagnostics/pressure_context.py",
+    "line": 8,
+    "doc": "See module guide and source."
+  },
+  {
+    "name": "SignedResidualCUSUM",
+    "signature": "(channels, *, context_unit='1', reference_step_s=1.0, drift_sigma=0.25, scale_floor=0.05, minimum_limit=5.0, prewhiten=False, **kwargs)",
+    "source": "src/equipment_diagnostics/signed_cusum.py",
+    "line": 13,
+    "doc": "See module guide and source."
+  },
+  {
+    "name": "evaporator_conductance_proxy",
+    "signature": "(condenser_duty_w, electric_power_w, evaporating_temperature_k, source_inlet_temperature_k)",
+    "source": "src/equipment_diagnostics/heat_pump.py",
+    "line": 19,
+    "doc": "Approximate (Qcond-W)/(Tsource,in-Tevap), W/K; not a measured UA.\n\nNeglects compressor/environmental losses and thermal storage, and uses the\nSOURCE INLET instead of unknown LMTD. Caller must identify measured versus\nassumed source temperatures. Cannot isolate flow reduction from fouling."
+  },
+  {
+    "name": "ConditionalResidualDiagnostic",
+    "signature": "(channels, *, features, targets, degree=1, ridge_alpha=0.01, window_s=0.0, minimum_z=3.0, calibration_role=None, feature_order=None, target_order=None, **kwargs)",
+    "source": "src/equipment_diagnostics/conditional_residual.py",
+    "line": 8,
+    "doc": "Predict normal responses from explicit observed operating features.\n\nEvery feature/target specifies its unit and log transform. Targets add\ndirection and scale_floor; preserve feature_order and target_order in\nconfiguration and saved references. Fit normal regression, calibrate on\nseparate normal data, then freeze before evaluation. observed/expected\nmetrics remain in transformed space, not necessarily physical units."
+  },
+  {
+    "name": "WindowChangeDiagnostic",
+    "signature": "(channels, *, mean_window_s=60.0, lags_s=(60.0, 300.0, 900.0), minimum_change=np.float64(0.048790164169432), **kwargs)",
+    "source": "src/equipment_diagnostics/window_change.py",
+    "line": 7,
+    "doc": "Compare causal residual means with earlier observed windows.\n\nThe signal is a signed dimensionless upstream residual whose basis must\nbe preserved. Window/lag values use seconds. Constant offsets cancel;\ninvalid observations and episode/context changes reset history. Faster\nengine-filter candidates raised false alarms and were not adopted."
+  }
+]

@@ -1,0 +1,18 @@
+cff-version: 1.2.0
+message: "Please cite the software version used and separately cite the original datasets and method references."
+type: software
+title: Monitoring Diagnostics Toolkit
+version: 0.17.0
+doi: 10.5281/zenodo.23992253
+date-released: 2026-11-06
+authors:
+  - family-names: Lee
+    given-names: Ugwiyeon
+repository-code: "https://github.com/lyullee/monitoring-diagnostics-toolkit"
+url: "https://github.com/lyullee/monitoring-diagnostics-toolkit"
+license: MIT
+abstract: "Python equipment-monitoring research toolkit with explicit SI sensor inputs, physical residuals, normal reference fitting, independent calibration, causal alarms and qualified validation records."
+keywords:
+  - condition monitoring
+  - physical residuals
+  - process diagnostics
