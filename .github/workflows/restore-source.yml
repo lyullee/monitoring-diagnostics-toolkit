@@ -1,0 +1,44 @@
+name: restore-reviewed-source
+on:
+  workflow_dispatch:
+  push:
+    paths: ['.github/workflows/restore-source.yml']
+permissions:
+  contents: write
+jobs:
+  restore:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Restore only reviewed original files from the audited archive
+        run: |
+          python - <<'PY'
+          import hashlib, pathlib, tarfile
+          archive = pathlib.Path('monitoring_diagnostics_toolkit-0.17.0.tar.gz')
+          assert hashlib.sha256(archive.read_bytes()).hexdigest() == '2685abaabf4562515c1c3168e8b5dbbcf9bf87931e7af3a715c844124f7f02dd'
+          roots = {'src','scripts','docs','evidence','tests','examples'}
+          files = {'README.md','LICENSE','THIRD_PARTY_NOTICES.md','CITATION.cff','CONTRIBUTING.md','MANIFEST.in','pyproject.toml','.gitignore','.gitattributes','.zenodo.json'}
+          with tarfile.open(archive) as t:
+              for m in t.getmembers():
+                  parts = pathlib.PurePosixPath(m.name).parts[1:]
+                  if not m.isfile() or not parts:
+                      continue
+                  assert '..' not in parts and not pathlib.PurePosixPath(*parts).is_absolute()
+                  if parts[0] == '.github' or any(p.endswith('.egg-info') for p in parts):
+                      continue
+                  if parts[0] not in roots and '/'.join(parts) not in files:
+                      continue
+                  dest = pathlib.Path(*parts)
+                  dest.parent.mkdir(parents=True, exist_ok=True)
+                  dest.write_bytes(t.extractfile(m).read())
+          PY
+      - name: Commit the public source tree
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src scripts docs evidence tests examples .gitignore .gitattributes .zenodo.json CITATION.cff CONTRIBUTING.md LICENSE MANIFEST.in README.md THIRD_PARTY_NOTICES.md pyproject.toml
+          git diff --cached --quiet || git commit -m 'Restore audited original source, tests and research documentation'
+          git push
