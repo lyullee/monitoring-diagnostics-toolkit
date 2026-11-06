@@ -1,23 +1,35 @@
 {
   "version": "0.17.1",
-  "stage": "prepared English-documentation patch release",
+  "stage": "published and registry installation verified",
   "github": {
     "repository": "https://github.com/lyullee/monitoring-diagnostics-toolkit",
-    "latest_published": "0.17.0",
+    "latest_published": "0.17.1",
     "release": "https://github.com/lyullee/monitoring-diagnostics-toolkit/releases/tag/v0.17.1",
-    "status": "0.17.1 preparation"
+    "status": "published",
+    "tag_commit": "ac2940766070b5842ed2b6060be1ac823263847b",
+    "public_ci": "https://github.com/lyullee/monitoring-diagnostics-toolkit/actions/runs/42151202929",
+    "public_ci_result": "success: Windows/Linux, Python3.11/3.12, four jobs"
   },
   "pypi": {
     "project": "monitoring-diagnostics-toolkit",
-    "latest_published": "0.17.0",
+    "latest_published": "0.17.1",
     "trusted_publisher": "registered: lyullee/monitoring-diagnostics-toolkit, release.yml, environment pypi",
-    "status": "0.17.1 preparation"
+    "status": "published",
+    "url": "https://pypi.org/project/monitoring-diagnostics-toolkit/0.17.1/",
+    "workflow_run": "https://github.com/lyullee/monitoring-diagnostics-toolkit/actions/runs/42151203629",
+    "fresh_venv_installation_verified": true,
+    "english_readme_verified": true
   },
   "zenodo": {
     "doi": "10.5281/zenodo.23993237",
     "record": "https://zenodo.org/records/23993237",
-    "status": "draft; reserved DOI"
+    "status": "published; open software; MIT original code/docs",
+    "files_match_local_publisher_md5": true
   },
   "previous_release": "evidence/releases/0.17.0/publication.json",
-  "note": "Archive ledgers describe preparation-time status; current Git main records final publication status. Calculation logic unchanged."
+  "note": "Archive ledgers describe preparation-time status; current Git main records final publication status. Calculation logic unchanged.",
+  "reviewed_archives": {
+    "monitoring_diagnostics_toolkit-0.17.1-py3-none-any.whl": "9f07350dabeca97f6ad68fd4ca92f077d3ea70bf63a31f535fd4fb74e04f2f0f",
+    "monitoring_diagnostics_toolkit-0.17.1.tar.gz": "9a26552b69eac9c5de10fe261b3838ea2bfbcf5e70651dfe126f0907a01d81ef"
+  }
 }
