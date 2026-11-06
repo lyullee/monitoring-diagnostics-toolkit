@@ -1,5 +1,5 @@
 {
-  "version": "0.17.0",
+  "version": "0.17.1",
   "python": "3.12.14",
   "platform": "Windows",
   "dependencies": {
@@ -18,7 +18,7 @@
     "passed": 286,
     "failed": 0,
     "skipped": 0,
-    "junit_sha256": "9debcb7c0c2bffc63ab4f70b523296ec27be2b6d18106099cedf3ad5f7f9d113"
+    "junit_sha256": "10a4672e513de92e3cb0d95ac98a89bb3cf908a778cc5c29273b130a7ef84c0f"
   },
   "integrations": {
     "passed": 7,
@@ -38,7 +38,7 @@
     "demo_kinds": 10
   },
   "core_source_sha256": {
-    "src/equipment_diagnostics/__init__.py": "f585266eccb2be1186092c16b918be8ca480810d870fc6ed75fd96b16dcbe96f",
+    "src/equipment_diagnostics/__init__.py": "95dd9b59e73cf50bed580686a185a8640f2cc4b379510dbb309f791adf2f6b24",
     "src/equipment_diagnostics/__main__.py": "79ee6f134c5c5193377cf9b189cbdcc3e2095e49ba9cec310114441c15a917c4",
     "src/equipment_diagnostics/adapters.py": "75a4abd38153c8af8154ddc8ecba446b7b3391db963d56a407da56243a0e443b",
     "src/equipment_diagnostics/additional.py": "53c017e7cf6d7bf6b2db603f8122ba8b7c53b17cc81c77dcaa06046099373ba9",

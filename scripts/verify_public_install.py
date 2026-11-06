@@ -5,11 +5,13 @@ import re
 import subprocess
 import sys
 import tempfile
+import tomllib
 
 ROOT = Path(__file__).resolve().parents[1]
 
 
 def main():
+    version = tomllib.loads((ROOT/'pyproject.toml').read_text(encoding='utf-8'))['project']['version']
     wheel, = (ROOT/'dist').glob('*.whl')
     example = re.findall(r'```python\n(.*?)\n```', (ROOT/'README.md').read_text(encoding='utf-8'), re.S)[0]
     with tempfile.TemporaryDirectory(prefix='monitoring_diagnostics_public_') as folder:
@@ -18,7 +20,7 @@ def main():
                        check=True, capture_output=True)
         prelude = 'import sys,pathlib; sys.path.insert(0,sys.argv[1]); import equipment_diagnostics as e; '
         prelude += 'assert pathlib.Path(e.__file__).resolve().is_relative_to(pathlib.Path(sys.argv[1]).resolve()); '
-        prelude += 'assert e.__version__=="0.17.0"; assert len(e.list_diagnostics())==11; '
+        prelude += f'assert e.__version__=={version!r}; assert len(e.list_diagnostics())==11; '
         subprocess.run([sys.executable, '-I', '-c', prelude+'\n'+example, str(target)],
                        cwd=folder, check=True, capture_output=True)
         demo = Path(folder)/'demo'

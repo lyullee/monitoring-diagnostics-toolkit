@@ -16,7 +16,7 @@ from .diagnostics import (MassBalanceDiagnostic, BoilerBalanceDiagnostic,
                           VaporizerDiagnostic, ROMembraneDiagnostic, ValveTrackingDiagnostic,
                           create_diagnostic, DIAGNOSTICS)
 
-__version__ = "0.17.0"
+__version__ = "0.17.1"
 __all__ = ["SensorBatch", "DiagnosticResult", "MassBalanceDiagnostic", "BoilerBalanceDiagnostic",
            "HeatExchangerDiagnostic", "HydraulicResistanceDiagnostic", "VaporizerDiagnostic",
            "ROMembraneDiagnostic", "ValveTrackingDiagnostic", "create_diagnostic", "DIAGNOSTICS"]

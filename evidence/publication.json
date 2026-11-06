@@ -1,38 +1,23 @@
 {
-  "version": "0.17.0",
+  "version": "0.17.1",
+  "stage": "prepared English-documentation patch release",
   "github": {
     "repository": "https://github.com/lyullee/monitoring-diagnostics-toolkit",
-    "visibility": "public",
-    "status": "published",
-    "release": "https://github.com/lyullee/monitoring-diagnostics-toolkit/releases/tag/v0.17.0",
-    "tag_commit": "be43efcf4599729aec5b84f8536fbdf64db87b1e",
-    "qualification": "research alpha; GitHub pre-release label",
-    "public_ci": "https://github.com/lyullee/monitoring-diagnostics-toolkit/actions/runs/42140451723",
-    "public_ci_result": "success: Windows/Linux, Python3.11/3.12, four jobs"
+    "latest_published": "0.17.0",
+    "release": "https://github.com/lyullee/monitoring-diagnostics-toolkit/releases/tag/v0.17.1",
+    "status": "0.17.1 preparation"
   },
   "pypi": {
     "project": "monitoring-diagnostics-toolkit",
-    "status": "pending project-scoped trusted-publisher authorization; not reported as published",
-    "owner": "lyullee",
-    "repository": "monitoring-diagnostics-toolkit",
-    "workflow": "release.yml",
-    "environment": "pypi"
+    "latest_published": "0.17.0",
+    "trusted_publisher": "registered: lyullee/monitoring-diagnostics-toolkit, release.yml, environment pypi",
+    "status": "0.17.1 preparation"
   },
   "zenodo": {
-    "status": "published; open software record; MIT original code/docs",
-    "record": "https://zenodo.org/records/23992253",
-    "doi": "10.5281/zenodo.23992253",
-    "files_match_local_publisher_md5": true
+    "doi": "10.5281/zenodo.23993237",
+    "record": "https://zenodo.org/records/23993237",
+    "status": "draft; reserved DOI"
   },
-  "reviewed_archives": {
-    "monitoring_diagnostics_toolkit-0.17.0.tar.gz": {
-      "sha256": "2685abaabf4562515c1c3168e8b5dbbcf9bf87931e7af3a715c844124f7f02dd",
-      "md5": "cdedd8ad1c9eea0339a0247f533ec50a"
-    },
-    "monitoring_diagnostics_toolkit-0.17.0-py3-none-any.whl": {
-      "sha256": "50e8d2141540caa89b5d4d1d874715a562ab3d064afb661bf0aef310046281fc",
-      "md5": "f13db14d4d3ea3fe06daab55fdd1064c"
-    }
-  },
-  "note": "This live publication ledger follows the tagged/archived release. Embedded archive ledgers describe preparation-time status. No new measured diagnostic validation is implied."
+  "previous_release": "evidence/releases/0.17.0/publication.json",
+  "note": "Archive ledgers describe preparation-time status; current Git main records final publication status. Calculation logic unchanged."
 }

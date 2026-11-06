@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "monitoring-diagnostics-toolkit"
-version = "0.17.0"
+version = "0.17.1"
 description = "Equipment-specific physical residuals and process monitoring with explicit SI sensor contracts"
 authors = [{name = "Ugwiyeon Lee"}]
 license = "MIT"

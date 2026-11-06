@@ -693,3 +693,4 @@ self._columns(batch, dict(signal='1'))
 - `calibrate(self, batch, *, quantile=0.9999)`
 - `score(self, batch)`
 - `set_reference(self, reference)`
+

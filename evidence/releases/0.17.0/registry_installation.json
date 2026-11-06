@@ -1,0 +1,24 @@
+{
+  "passed": true,
+  "fresh_venv": true,
+  "outside_checkout": true,
+  "registry_sha256": {
+    "monitoring_diagnostics_toolkit-0.17.0-py3-none-any.whl": "50e8d2141540caa89b5d4d1d874715a562ab3d064afb661bf0aef310046281fc",
+    "monitoring_diagnostics_toolkit-0.17.0.tar.gz": "2685abaabf4562515c1c3168e8b5dbbcf9bf87931e7af3a715c844124f7f02dd"
+  },
+  "smoke": {
+    "version": "0.17.0",
+    "catalog_kinds": 11,
+    "synthetic_example": {
+      "detector": "vaporizer",
+      "samples": 5,
+      "valid_samples": 5,
+      "alarm_samples": 3,
+      "latest_state": "ALARM",
+      "status": "suspected_anomaly",
+      "has_invalid_samples": false
+    },
+    "numpy": "2.5.4"
+  },
+  "scope": "registry integrity and installed-software smoke; no new measured fault validation"
+}

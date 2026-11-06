@@ -1,4 +1,4 @@
-include README.md
+include README.md README.ko.md
 include LICENSE THIRD_PARTY_NOTICES.md CITATION.cff CONTRIBUTING.md
 include .zenodo.json
 include .gitignore .gitattributes

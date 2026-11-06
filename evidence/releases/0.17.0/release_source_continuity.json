@@ -1,0 +1,192 @@
+{
+  "passed": true,
+  "scope": "core AST equality after removing docstrings and version assignment",
+  "files": [
+    {
+      "path": "src/equipment_diagnostics/__init__.py",
+      "archived_sha256": "c0be53919421c2c12411dfc6f3d6e79cb28be07433e65a9196a4862c66c77941",
+      "release_sha256": "f585266eccb2be1186092c16b918be8ca480810d870fc6ed75fd96b16dcbe96f",
+      "byte_identical": false
+    },
+    {
+      "path": "src/equipment_diagnostics/__main__.py",
+      "archived_sha256": "79ee6f134c5c5193377cf9b189cbdcc3e2095e49ba9cec310114441c15a917c4",
+      "release_sha256": "79ee6f134c5c5193377cf9b189cbdcc3e2095e49ba9cec310114441c15a917c4",
+      "byte_identical": true
+    },
+    {
+      "path": "src/equipment_diagnostics/adapters.py",
+      "archived_sha256": "75a4abd38153c8af8154ddc8ecba446b7b3391db963d56a407da56243a0e443b",
+      "release_sha256": "75a4abd38153c8af8154ddc8ecba446b7b3391db963d56a407da56243a0e443b",
+      "byte_identical": true
+    },
+    {
+      "path": "src/equipment_diagnostics/additional.py",
+      "archived_sha256": "63059262ff792f2f4288c45bdbbccb9cd65b9706d1313a19c3f496dab72b95d6",
+      "release_sha256": "53c017e7cf6d7bf6b2db603f8122ba8b7c53b17cc81c77dcaa06046099373ba9",
+      "byte_identical": false
+    },
+    {
+      "path": "src/equipment_diagnostics/alarm_hysteresis.py",
+      "archived_sha256": "d6e3beeb23bdfacc0db15d673eb21c0f1379fe799ff2fb87f3dada093431129c",
+      "release_sha256": "d6e3beeb23bdfacc0db15d673eb21c0f1379fe799ff2fb87f3dada093431129c",
+      "byte_identical": true
+    },
+    {
+      "path": "src/equipment_diagnostics/base.py",
+      "archived_sha256": "460b454ec95d28412e8fa63ea75c48ec61aa61498d3c689f7aaac823bd831e87",
+      "release_sha256": "460b454ec95d28412e8fa63ea75c48ec61aa61498d3c689f7aaac823bd831e87",
+      "byte_identical": true
+    },
+    {
+      "path": "src/equipment_diagnostics/boosted_filter.py",
+      "archived_sha256": "e72ae7f8ffd202639275e357649feb0d96f654bd7531959bfbe662e724abef62",
+      "release_sha256": "e72ae7f8ffd202639275e357649feb0d96f654bd7531959bfbe662e724abef62",
+      "byte_identical": true
+    },
+    {
+      "path": "src/equipment_diagnostics/catalog.py",
+      "archived_sha256": "3a247d2eb9fa70b706878ba782c062d88141a8cd3088847f0515db18d4a80df6",
+      "release_sha256": "3a247d2eb9fa70b706878ba782c062d88141a8cd3088847f0515db18d4a80df6",
+      "byte_identical": true
+    },
+    {
+      "path": "src/equipment_diagnostics/chiller_reference.py",
+      "archived_sha256": "353651f6e725cdac0b8d087acbed6c7caae6c1ba6a9af984443856526090831e",
+      "release_sha256": "353651f6e725cdac0b8d087acbed6c7caae6c1ba6a9af984443856526090831e",
+      "byte_identical": true
+    },
+    {
+      "path": "src/equipment_diagnostics/chiller_staged.py",
+      "archived_sha256": "65e8764b0e1382703706c48f80f334ab6832e8b50b2636fc8a055eb7e06573a2",
+      "release_sha256": "65e8764b0e1382703706c48f80f334ab6832e8b50b2636fc8a055eb7e06573a2",
+      "byte_identical": true
+    },
+    {
+      "path": "src/equipment_diagnostics/cli.py",
+      "archived_sha256": "0842d70a0840f2cf4e75b79f44332896f887ded73e32b52aaec8b40fea92adce",
+      "release_sha256": "0842d70a0840f2cf4e75b79f44332896f887ded73e32b52aaec8b40fea92adce",
+      "byte_identical": true
+    },
+    {
+      "path": "src/equipment_diagnostics/conditional_residual.py",
+      "archived_sha256": "bd06ea09f6740ce83bf5d8fb7180735572465539b78ead35080a1cdfb55ea49e",
+      "release_sha256": "5ae648d48001369f65b49b21f29e1fec8a0f59ff468c711de68db158c50066d1",
+      "byte_identical": false
+    },
+    {
+      "path": "src/equipment_diagnostics/contracts.py",
+      "archived_sha256": "33489560a061487ecce33b97cca0f2f8c3660b0cc81a32090411b73d478cb225",
+      "release_sha256": "33489560a061487ecce33b97cca0f2f8c3660b0cc81a32090411b73d478cb225",
+      "byte_identical": true
+    },
+    {
+      "path": "src/equipment_diagnostics/diagnostics.py",
+      "archived_sha256": "c1924626e9507e187fcf72a78669065ae0e471ec346e3353d1b42ed7a6e2df04",
+      "release_sha256": "631f0d492db994b83e5a3e3ac4db083aad637bbcddbda8bfbdf13ef282de0646",
+      "byte_identical": false
+    },
+    {
+      "path": "src/equipment_diagnostics/evaluation.py",
+      "archived_sha256": "1322b7ea3df9ec20449a3fcaf62bf18e4af0fec996ca6a3fcc4fc88ab03ae9a7",
+      "release_sha256": "1322b7ea3df9ec20449a3fcaf62bf18e4af0fec996ca6a3fcc4fc88ab03ae9a7",
+      "byte_identical": true
+    },
+    {
+      "path": "src/equipment_diagnostics/filter_classifier.py",
+      "archived_sha256": "cee0ea34cfea6c14414a65e03517a2a6f6bb203fd8397c49ca0359416012a04f",
+      "release_sha256": "cee0ea34cfea6c14414a65e03517a2a6f6bb203fd8397c49ca0359416012a04f",
+      "byte_identical": true
+    },
+    {
+      "path": "src/equipment_diagnostics/filter_ensemble.py",
+      "archived_sha256": "0f4b26132089f1248ff440ee40ffd68848f9b9ef994ec2bc5df8611ba9a0f7a3",
+      "release_sha256": "0f4b26132089f1248ff440ee40ffd68848f9b9ef994ec2bc5df8611ba9a0f7a3",
+      "byte_identical": true
+    },
+    {
+      "path": "src/equipment_diagnostics/filter_risk.py",
+      "archived_sha256": "decd2782d2c8702ab3a9e34be6538cd3544453fff929141787263f1a1cc89883",
+      "release_sha256": "decd2782d2c8702ab3a9e34be6538cd3544453fff929141787263f1a1cc89883",
+      "byte_identical": true
+    },
+    {
+      "path": "src/equipment_diagnostics/heat_pump.py",
+      "archived_sha256": "739f25b9cc4beb4953f94bfda206c48d5bdc99f05f0f7525e926726291343187",
+      "release_sha256": "d12267577e53f0aff9065a3871b0a5618305b32cd49621993a8f965e6cfaf9cd",
+      "byte_identical": false
+    },
+    {
+      "path": "src/equipment_diagnostics/io.py",
+      "archived_sha256": "e57198577bd09660968c85580dce5cd42c90aec0d78d34ceb5b80c078ad00a86",
+      "release_sha256": "e57198577bd09660968c85580dce5cd42c90aec0d78d34ceb5b80c078ad00a86",
+      "byte_identical": true
+    },
+    {
+      "path": "src/equipment_diagnostics/observed_inputs.py",
+      "archived_sha256": "8e112a74aff93edd22bc2db526f9f2aef160243306b0c9d7ef99bc36f222476d",
+      "release_sha256": "8e112a74aff93edd22bc2db526f9f2aef160243306b0c9d7ef99bc36f222476d",
+      "byte_identical": true
+    },
+    {
+      "path": "src/equipment_diagnostics/operating_models.py",
+      "archived_sha256": "310f112cb8fc48081f5ccc26e0178c8ad5a3dc91acb15448ab78eb693994b0e7",
+      "release_sha256": "310f112cb8fc48081f5ccc26e0178c8ad5a3dc91acb15448ab78eb693994b0e7",
+      "byte_identical": true
+    },
+    {
+      "path": "src/equipment_diagnostics/physical_inputs.py",
+      "archived_sha256": "dd05fe013fd4a33fd37ae0c9bf7ac9c3cd5a760835d3f74f252408bc834e9d71",
+      "release_sha256": "dd05fe013fd4a33fd37ae0c9bf7ac9c3cd5a760835d3f74f252408bc834e9d71",
+      "byte_identical": true
+    },
+    {
+      "path": "src/equipment_diagnostics/pressure_context.py",
+      "archived_sha256": "0db94dda4290ed3b560a98ebc5330f80cba930116ea7f58376cfd0e9a7052d68",
+      "release_sha256": "0db94dda4290ed3b560a98ebc5330f80cba930116ea7f58376cfd0e9a7052d68",
+      "byte_identical": true
+    },
+    {
+      "path": "src/equipment_diagnostics/quick_improvements.py",
+      "archived_sha256": "5f49b7b7b899be7523a9344979d7245973b113cb7cbf0e9370605c5a09e46bb2",
+      "release_sha256": "5f49b7b7b899be7523a9344979d7245973b113cb7cbf0e9370605c5a09e46bb2",
+      "byte_identical": true
+    },
+    {
+      "path": "src/equipment_diagnostics/residual_coherence.py",
+      "archived_sha256": "0584bdb3285fa06aba90e3b04486e8a166dc5bd508e3dd35afab4eea4915a7f9",
+      "release_sha256": "0584bdb3285fa06aba90e3b04486e8a166dc5bd508e3dd35afab4eea4915a7f9",
+      "byte_identical": true
+    },
+    {
+      "path": "src/equipment_diagnostics/signed_cusum.py",
+      "archived_sha256": "7dba63aa3b50bf29b122b9f7b0f37f476f4940a7441e0805bb1967de32a33a81",
+      "release_sha256": "7dba63aa3b50bf29b122b9f7b0f37f476f4940a7441e0805bb1967de32a33a81",
+      "byte_identical": true
+    },
+    {
+      "path": "src/equipment_diagnostics/streaming.py",
+      "archived_sha256": "96fc5decc711a444b13d692dc00875d37fbf490d10cf41d09a8f940bded3ed08",
+      "release_sha256": "96fc5decc711a444b13d692dc00875d37fbf490d10cf41d09a8f940bded3ed08",
+      "byte_identical": true
+    },
+    {
+      "path": "src/equipment_diagnostics/temporal_evidence.py",
+      "archived_sha256": "e38a588773c74dd4ee5cd448f45b4d133867d669b49ec59261dad96621fef01a",
+      "release_sha256": "e38a588773c74dd4ee5cd448f45b4d133867d669b49ec59261dad96621fef01a",
+      "byte_identical": true
+    },
+    {
+      "path": "src/equipment_diagnostics/wet_coil.py",
+      "archived_sha256": "a06c1d163c3d0e0579104d5d73d391aac09bbc27171767330a6e240c02080f11",
+      "release_sha256": "a06c1d163c3d0e0579104d5d73d391aac09bbc27171767330a6e240c02080f11",
+      "byte_identical": true
+    },
+    {
+      "path": "src/equipment_diagnostics/window_change.py",
+      "archived_sha256": "1178a0816b27850a7e5ff630f5b7e1c84fa3ff039db75ee42dd53cadd33c6c26",
+      "release_sha256": "f27d38a3aa8d70b3acabd3b3f197c7976a75f4d9e554126ef07b418505e6716a",
+      "byte_identical": false
+    }
+  ]
+}

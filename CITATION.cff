@@ -2,8 +2,8 @@ cff-version: 1.2.0
 message: "Please cite the software version used and separately cite the original datasets and method references."
 type: software
 title: Monitoring Diagnostics Toolkit
-version: 0.17.0
-doi: 10.5281/zenodo.23992253
+version: 0.17.1
+doi: 10.5281/zenodo.23993237
 date-released: 2026-11-06
 authors:
   - family-names: Lee

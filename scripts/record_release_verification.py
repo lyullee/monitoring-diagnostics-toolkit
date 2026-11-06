@@ -5,6 +5,7 @@ import json
 import platform
 from pathlib import Path
 import xml.etree.ElementTree as ET
+from equipment_diagnostics import __version__
 
 ROOT = Path(__file__).resolve().parents[1]
 
@@ -18,6 +19,7 @@ def main():
     smoke = json.loads((ROOT/'outputs/public_release/install_smoke.json').read_text(encoding='utf-8'))
     assert len(cases) == 286 and not failed and not skipped
     assert integration['exit_code'] == 0 and smoke['passed']
+    assert smoke['package'].startswith('monitoring_diagnostics_toolkit-'+__version__+'-')
     assert json.loads((ROOT/'evidence/release_source_continuity.json').read_text())['passed']
     versions = {}
     for name in ('numpy', 'pytest', 'scikit-learn', 'pandas', 'scipy', 'CoolProp', 'ht', 'fluids', 'build', 'twine'):
@@ -25,7 +27,7 @@ def main():
             versions[name] = importlib.metadata.version(name)
         except importlib.metadata.PackageNotFoundError:
             versions[name] = None
-    payload = dict(version='0.17.0', python=platform.python_version(), platform=platform.system(),
+    payload = dict(version=__version__, python=platform.python_version(), platform=platform.system(),
         dependencies=versions, nonintegration_tests=dict(passed=len(cases), failed=0, skipped=0,
             junit_sha256=hashlib.sha256((ROOT/'outputs/public_release/regression.xml').read_bytes()).hexdigest()),
         integrations=dict(passed=7, scope=integration['scope'], upstream_revisions=integration['upstream_revisions']),

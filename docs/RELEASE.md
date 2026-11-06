@@ -1,4 +1,11 @@
-# Public release record: 0.17.0
+# Public release records: 0.17.0 and 0.17.1
+
+0.17.1 replaces the default README with a complete English guide and preserves the
+Korean 0.17.0 text as `README.ko.md`. Both the source-distribution README and the PyPI
+description use English. Exact conditional sensor-role names are now visible in the
+README. Packaging smoke scripts obtain the release version from project metadata.
+No diagnostic calculation was changed; measured evidence still refers to the recorded
+development campaigns. Prior public-release records remain in `evidence/releases/0.17.0/`.
 
 Project: **Monitoring Diagnostics Toolkit**. Distribution `monitoring-diagnostics-toolkit`;
 import `equipment_diagnostics`; CLI `equipment-diagnose`. The public source history starts
@@ -35,3 +42,9 @@ files may be copied verbatim; their SHA256 identifies the specific uploaded arte
 The release workflow builds/tests from a published GitHub release, then uses a project-
 specific PyPI trusted publisher. It does not store a long-lived PyPI API token. The trust
 registration is security-sensitive and may require user action under browser policy.
+
+For 0.17.1 and later, `release-assets.json` in the Git repository identifies the two
+reviewed root-level release archives by version and SHA256. It is intentionally outside
+the source distribution: a source archive cannot embed its own final hash. The workflow
+checks/builds source separately, verifies the reviewed archive hashes, and publishes those
+same files. Keep older archives and release records; do not replace a published version.
