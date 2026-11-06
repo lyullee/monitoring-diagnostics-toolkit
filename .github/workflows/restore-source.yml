@@ -1,26 +1,52 @@
-# Initial source restoration is complete and preserved in Git history.
-# The remaining manual workflow verifies archive identity and never rewrites code.
-name: verify-reviewed-release-archive
+name: sync-reviewed-release-source
 on:
   workflow_dispatch:
+  push:
+    branches: [main]
+    paths: ['.github/workflows/restore-source.yml']
 permissions:
-  contents: read
+  contents: write
 jobs:
-  verify:
+  sync:
+    if: github.ref == 'refs/heads/main'
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-python@v5
         with:
           python-version: '3.11'
-      - run: |
+      - name: Restore only reviewed original files
+        run: |
           python - <<'PY'
-          import hashlib, pathlib
-          expected = {
-              'monitoring_diagnostics_toolkit-0.17.0.tar.gz': '2685abaabf4562515c1c3168e8b5dbbcf9bf87931e7af3a715c844124f7f02dd',
-              'monitoring_diagnostics_toolkit-0.17.0-py3-none-any.whl': '50e8d2141540caa89b5d4d1d874715a562ab3d064afb661bf0aef310046281fc'
-          }
-          for name, digest in expected.items():
-              assert hashlib.sha256(pathlib.Path(name).read_bytes()).hexdigest() == digest
-          print('Reviewed public archive hashes match; no source files changed.')
+          import hashlib, json, pathlib, tarfile, tomllib
+          manifest = json.loads(pathlib.Path('release-assets.json').read_text())
+          name, = [n for n in manifest['artifacts'] if n.endswith('.tar.gz')]
+          assert pathlib.Path(name).name == name
+          assert name == 'monitoring_diagnostics_toolkit-'+manifest['version']+'.tar.gz'
+          archive = pathlib.Path(name)
+          assert hashlib.sha256(archive.read_bytes()).hexdigest() == manifest['artifacts'][name]
+          roots = {'src','scripts','docs','evidence','tests','examples'}
+          files = {'README.md','README.ko.md','LICENSE','THIRD_PARTY_NOTICES.md','CITATION.cff','CONTRIBUTING.md','MANIFEST.in','pyproject.toml','.gitignore','.gitattributes','.zenodo.json'}
+          with tarfile.open(archive) as t:
+              for m in t.getmembers():
+                  parts = pathlib.PurePosixPath(m.name).parts[1:]
+                  if not m.isfile() or not parts:
+                      continue
+                  assert '..' not in parts and not pathlib.PurePosixPath(*parts).is_absolute()
+                  if parts[0] == '.github' or any(p.endswith('.egg-info') for p in parts):
+                      continue
+                  if parts[0] not in roots and '/'.join(parts) not in files:
+                      continue
+                  dest = pathlib.Path(*parts)
+                  dest.parent.mkdir(parents=True, exist_ok=True)
+                  dest.write_bytes(t.extractfile(m).read())
+          assert tomllib.loads(pathlib.Path('pyproject.toml').read_text())['project']['version'] == manifest['version']
           PY
+      - run: python scripts/verify_release_continuity.py
+      - name: Commit reviewed source and documentation
+        run: |
+          git config user.name 'github-actions[bot]'
+          git config user.email '41898282+github-actions[bot]@users.noreply.github.com'
+          git add src scripts docs evidence tests examples .gitignore .gitattributes .zenodo.json CITATION.cff CONTRIBUTING.md LICENSE MANIFEST.in README.md README.ko.md THIRD_PARTY_NOTICES.md pyproject.toml
+          git diff --cached --quiet || git commit -m 'Publish 0.17.1 English README and original documentation patch'
+          git push
